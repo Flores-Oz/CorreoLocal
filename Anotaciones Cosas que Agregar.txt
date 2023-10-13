@@ -3,4 +3,4 @@ NavBar para la Barra de Opciones de Correo Electronico
 Badges para cuantos correos nuevos tenemos ¿Como?
 ToolTips para mas informacion 
 Enviados, Recibidos, Eliminados
-Dos Estados debe de poseer la tabla de mensaje, posicion "recibido" "enviado" "eliminado", estado "nuevo" "viejo"
+Dos Estados debe de poseer la tabla de mensaje, posicion "recibido" "enviado" "eliminado", estado "nupevo" "viejo"
