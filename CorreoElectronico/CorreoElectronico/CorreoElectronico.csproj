@@ -67,9 +67,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\Style.css" />
+    <Content Include="CSS\Style1.css" />
+    <Content Include="CSS\StyleSheet1.css" />
     <Content Include="default.aspx" />
     <Content Include="Entrada\Login.aspx" />
-    <Content Include="Entrada\Registrer.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -86,13 +88,6 @@
     </Compile>
     <Compile Include="Entrada\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Entrada\Registrer.aspx.cs">
-      <DependentUpon>Registrer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Entrada\Registrer.aspx.designer.cs">
-      <DependentUpon>Registrer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

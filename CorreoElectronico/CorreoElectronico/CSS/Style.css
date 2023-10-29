@@ -1,0 +1,13 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+.half-background {
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    background: #ffe5e5; /* Cambia este color al que desees para la mitad izquierda */
+    display: flex; /* Habilita Flexbox */
+    align-items: center; /* Alinea el contenido verticalmente al centro */
+    justify-content: center;
+    margin: 0;
+}
+  
