@@ -47,7 +47,7 @@
                                                 </div>
 
                                                 <p class="mb-5 pb-lg-2" style="color: #393f81;">
-                                                    No tienes una Cuenta? <a href="#!"
+                                                    No tienes una Cuenta? <a href="Register.aspx"
                                                         style="color: #393f81;">Registrate Aqui!</a>
                                                 </p>
                                                 <a href="#" class="small text-muted">Terms of use.</a>
