@@ -202,6 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Correo\BandejaEntrada.aspx" />
+    <Content Include="Correo\BandejaSalida.aspx" />
+    <Content Include="Correo\Eliminados.aspx" />
+    <Content Include="Correo\Escribir.aspx" />
     <Content Include="CSS\Style.css" />
     <Content Include="CSS\Style1.css" />
     <Content Include="CSS\StyleSheet1.css" />
@@ -218,6 +221,27 @@
     </Compile>
     <Compile Include="Correo\BandejaEntrada.aspx.designer.cs">
       <DependentUpon>BandejaEntrada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Correo\BandejaSalida.aspx.cs">
+      <DependentUpon>BandejaSalida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Correo\BandejaSalida.aspx.designer.cs">
+      <DependentUpon>BandejaSalida.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Correo\Eliminados.aspx.cs">
+      <DependentUpon>Eliminados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Correo\Eliminados.aspx.designer.cs">
+      <DependentUpon>Eliminados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Correo\Escribir.aspx.cs">
+      <DependentUpon>Escribir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Correo\Escribir.aspx.designer.cs">
+      <DependentUpon>Escribir.aspx</DependentUpon>
     </Compile>
     <Compile Include="Data\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
