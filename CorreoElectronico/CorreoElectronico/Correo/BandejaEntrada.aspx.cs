@@ -12,8 +12,8 @@ namespace CorreoElectronico.Correo
 {
     public partial class BandejaEntrada : System.Web.UI.Page
     {
-        Mail2TableAdapter mail2 = new Mail2TableAdapter();
         Mail3TableAdapter mail3 = new Mail3TableAdapter();
+        Mail4TableAdapter mail4 = new Mail4TableAdapter();
         public void BandejadeEntrada()
         {
             
@@ -23,7 +23,7 @@ namespace CorreoElectronico.Correo
             if(!IsPostBack) {
                 BandejadeEntrada();
                 String mail = Session["Email: "].ToString();
-                GridViewBEntrada.DataSource = mail2.VerificarBandejadeEntrada("Entrada", mail);
+                GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
                 GridViewBEntrada.DataBind();
             }
         }
@@ -48,6 +48,14 @@ namespace CorreoElectronico.Correo
                     LabelCuerpo.Text = cuerpo;
                 }
             }
+        }
+
+        protected void GridViewBEntrada_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewBEntrada.PageIndex = e.NewPageIndex;
+            String mail = Session["Email: "].ToString();
+            GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
+            GridViewBEntrada.DataBind();
         }
     }
 }

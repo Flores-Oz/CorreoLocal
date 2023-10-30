@@ -9,10 +9,12 @@
             <div class="col-lg-6">
                 <div class="table-responsive">
 
-                    <asp:GridView ID="GridViewBEntrada" CssClass="list-group-item list-group-item-action" runat="server" AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewBEntrada_SelectedIndexChanged">
+                    <asp:GridView ID="GridViewBEntrada" CssClass="list-group-item list-group-item-action" runat="server"
+                        AllowPaging="True" PageSize="4"  OnPageIndexChanging="GridViewBEntrada_PageIndexChanging"
+                        AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewBEntrada_SelectedIndexChanged">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="Bandeja de Entrada" HeaderText="Bandeja de Entrada" />
+                            <asp:BoundField DataField="Titulo" HeaderText="Bandeja de Entrada" />
                             <asp:BoundField DataField="Estado" HeaderText="Leido" />
                             <asp:BoundField DataField="Identificador" HeaderText="Identificador" />
                             <asp:BoundField />
