@@ -36,8 +36,8 @@
                         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Correo electrónico seguro, inteligente y fácil de usar </h1>
                         <p class="lead">Mejora tu productividad con Smart Brain.</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <asp:Button ID="Button1" CssClass="btn btn-primary btn-lg px-4 me-md-2" runat="server" Text="Iniciar Sesion" />
-                            <asp:Button ID="Button2" CssClass="btn btn-outline-secondary btn-lg px-4" runat="server" Text="Crear Usuario" />
+                            <asp:Button ID="Button1" CssClass="btn btn-primary btn-lg px-4 me-md-2" runat="server" Text="Iniciar Sesion" OnClick="Button1_Click" />
+                            <asp:Button ID="Button2" CssClass="btn btn-outline-secondary btn-lg px-4" runat="server" Text="Crear Usuario" OnClick="Button2_Click" />
                         </div>
                     </div>
                 </div>
@@ -48,14 +48,14 @@
                         <div class="h-100 p-5 bg-warning-subtle border rounded-3">
                             <h2>Usa SmartBrain en cualquier dispositivo</h2>
                             <p>Disfruta de la facilidad y de la sencillez de SmartBrain desde cualquier lugar. </p>
-                            <asp:Button ID="Button3" CssClass="btn btn-outline-warning btn-lg px-4" runat="server" Text="Iniciar Sesion" />
+                            <asp:Button ID="Button3" CssClass="btn btn-outline-warning btn-lg px-4" runat="server" Text="Iniciar Sesion" OnClick="Button3_Click" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="h-100 p-5 bg-info-subtle border rounded-3">
                             <h2>Recoge los frutos de un trabajo bien hecho.</h2>
                             <p>Empieza a disfrutar de la mayor potencia de Smart Brain. </p>
-                            <asp:Button ID="Button4" CssClass="btn btn-outline-info btn-lg px-4" runat="server" Text="Crear Usuario" />
+                            <asp:Button ID="Button4" CssClass="btn btn-outline-info btn-lg px-4" runat="server" Text="Crear Usuario" OnClick="Button4_Click" />
                         </div>
                     </div>
                 </div>

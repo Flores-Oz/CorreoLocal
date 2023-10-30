@@ -43,7 +43,7 @@
                                                 </div>
 
                                                 <div class="pt-1 mb-4">
-                                                    <asp:Button ID="Button1"  CssClass="btn btn-lg btn-block btn-outline-warning" Width="100%" runat="server" Text="Ingresar" />
+                                                    <asp:Button ID="Button1"  CssClass="btn btn-lg btn-block btn-outline-warning" Width="100%" runat="server" Text="Ingresar" OnClick="Button1_Click" />
                                                 </div>
 
                                                 <p class="mb-5 pb-lg-2" style="color: #393f81;">

@@ -65,7 +65,7 @@
                                                     </div>
                                                     <div class="col-md-6 mb-4">
                                                         <asp:Label ID="Label6" runat="server" CssClass="fw-normal" Text="Telefono"></asp:Label>
-                                                        <asp:TextBox ID="TextBoxTel" CssClass="form-control form-control-md" placeholder="+000-00000000" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="TextBoxTel" CssClass="form-control form-control-md" placeholder="00000000" runat="server"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -98,7 +98,7 @@
 
                                                     <div class="pt-1 mb-4">
                                                         <br />
-                                                        <asp:Button ID="Button1" CssClass="btn btn-lg btn-block btn-outline-success" Width="100%" runat="server" Text="Ingresar" />
+                                                        <asp:Button ID="Button1" CssClass="btn btn-lg btn-block btn-outline-success" Width="100%" runat="server" Text="Registrarse" OnClick="Button1_Click" />
                                                     </div>
 
                                                     <p class="mb-5 pb-lg-2" style="color: #393f81;">
