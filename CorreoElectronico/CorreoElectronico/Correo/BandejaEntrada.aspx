@@ -11,13 +11,37 @@
 
                     <asp:GridView ID="GridViewBEntrada" CssClass="list-group-item list-group-item-action" runat="server"
                         AllowPaging="True" PageSize="4"  OnPageIndexChanging="GridViewBEntrada_PageIndexChanging"
-                        AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewBEntrada_SelectedIndexChanged">
+                        AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewBEntrada_SelectedIndexChanged" OnRowCancelingEdit="GridViewBEntrada_RowCancelingEdit" OnRowEditing="GridViewBEntrada_RowEditing" OnRowUpdating="GridViewBEntrada_RowUpdating">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="Titulo" HeaderText="Bandeja de Entrada" />
-                            <asp:BoundField DataField="Estado" HeaderText="Leido" />
-                            <asp:BoundField DataField="Identificador" HeaderText="Identificador" />
-                            <asp:BoundField />
+                            <asp:BoundField DataField="Titulo" HeaderText="Bandeja de Entrada" >
+                            <FooterStyle HorizontalAlign="Center" />
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Estado" HeaderText="Sin Leer" >
+                            <FooterStyle HorizontalAlign="Center" />
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Identificador" HeaderText="Identificador" >
+                            <FooterStyle HorizontalAlign="Center" />
+                            <HeaderStyle HorizontalAlign="Center" />
+                            <ItemStyle HorizontalAlign="Center" />
+                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <EditItemTemplate>
+                                    <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/img/eliminar.png" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <asp:ImageButton ID="ImageButton3" runat="server" CommandName="Cancel" ImageUrl="~/img/error.png" />
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:ImageButton ID="ImageButton1" runat="server" CommandName="Edit" ImageUrl="~/img/marco(1).png" />
+                                </ItemTemplate>
+                                <FooterStyle HorizontalAlign="Center" />
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                         </Columns>
                         <EditRowStyle BackColor="#999999" />
                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

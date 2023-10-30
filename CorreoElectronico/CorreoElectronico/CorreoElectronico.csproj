@@ -212,6 +212,10 @@
     <Content Include="default.aspx" />
     <Content Include="Entrada\Login.aspx" />
     <Content Include="Entrada\Register.aspx" />
+    <Content Include="img\eliminar.png" />
+    <Content Include="img\error.png" />
+    <Content Include="img\marco%281%29.png" />
+    <Content Include="img\marco.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

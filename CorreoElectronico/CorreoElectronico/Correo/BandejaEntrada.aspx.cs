@@ -57,5 +57,27 @@ namespace CorreoElectronico.Correo
             GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
             GridViewBEntrada.DataBind();
         }
+
+        protected void GridViewBEntrada_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridViewBEntrada.EditIndex = -1;
+            String mail = Session["Email: "].ToString();
+            GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
+            GridViewBEntrada.DataBind();
+        }
+
+        protected void GridViewBEntrada_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridViewBEntrada.EditIndex = e.NewEditIndex;
+            String mail = Session["Email: "].ToString();
+            GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
+            GridViewBEntrada.DataBind();
+            GridViewBEntrada.EditRowStyle.BackColor = System.Drawing.Color.LightSalmon;
+        }
+
+        protected void GridViewBEntrada_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+
+        }
     }
 }
