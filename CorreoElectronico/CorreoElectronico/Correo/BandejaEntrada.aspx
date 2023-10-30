@@ -10,25 +10,43 @@
                 <div class="table-responsive">
 
                     <asp:GridView ID="GridViewBEntrada" CssClass="list-group-item list-group-item-action" runat="server"
-                        AllowPaging="True" PageSize="4"  OnPageIndexChanging="GridViewBEntrada_PageIndexChanging"
+                        AllowPaging="True" PageSize="9"  OnPageIndexChanging="GridViewBEntrada_PageIndexChanging"
                         AutoGenerateColumns="False" AutoGenerateSelectButton="True" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridViewBEntrada_SelectedIndexChanged" OnRowCancelingEdit="GridViewBEntrada_RowCancelingEdit" OnRowEditing="GridViewBEntrada_RowEditing" OnRowUpdating="GridViewBEntrada_RowUpdating">
                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                         <Columns>
-                            <asp:BoundField DataField="Titulo" HeaderText="Bandeja de Entrada" >
-                            <FooterStyle HorizontalAlign="Center" />
-                            <HeaderStyle HorizontalAlign="Center" />
-                            <ItemStyle HorizontalAlign="Center" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Estado" HeaderText="Sin Leer" >
-                            <FooterStyle HorizontalAlign="Center" />
-                            <HeaderStyle HorizontalAlign="Center" />
-                            <ItemStyle HorizontalAlign="Center" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Identificador" HeaderText="Identificador" >
-                            <FooterStyle HorizontalAlign="Center" />
-                            <HeaderStyle HorizontalAlign="Center" />
-                            <ItemStyle HorizontalAlign="Center" />
-                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Bandeja de Entrada">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("Titulo") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("Titulo") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterStyle HorizontalAlign="Center" />
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Sin Leer">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("Estado") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterStyle HorizontalAlign="Center" />
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Identificador">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("Identificador") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Identificador") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterStyle HorizontalAlign="Center" />
+                                <HeaderStyle HorizontalAlign="Center" />
+                                <ItemStyle HorizontalAlign="Center" />
+                            </asp:TemplateField>
                             <asp:TemplateField>
                                 <EditItemTemplate>
                                     <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/img/eliminar.png" />

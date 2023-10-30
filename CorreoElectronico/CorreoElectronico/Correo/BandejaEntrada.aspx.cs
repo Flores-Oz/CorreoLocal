@@ -18,6 +18,13 @@ namespace CorreoElectronico.Correo
         {
             
         }
+        public void LimpiarMensaje()
+        {
+            LabelTitulo.Text = "Bienvenido";
+            LabelEmisor.Text = "Bandeja de Entrada";
+            LabelFechaHora.Text = "";
+            LabelCuerpo.Text = "";
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack) {
@@ -34,8 +41,10 @@ namespace CorreoElectronico.Correo
             if (rowIndex >= 0 && rowIndex < GridViewBEntrada.Rows.Count)
             {
                 // Accede al valor de una celda específica en la fila seleccionada
-                string cod = GridViewBEntrada.Rows[rowIndex].Cells[3].Text;
-                DataTable verificar = mail3.ObtenerMensajeporCodigo(Convert.ToInt32( cod));
+                Label code = GridViewBEntrada.Rows[rowIndex].FindControl("Label3") as Label;
+                string codeone = code.Text;
+                mail4.ActualizarEstado(false, Convert.ToInt32(codeone));
+                DataTable verificar = mail3.ObtenerMensajeporCodigo(Convert.ToInt32(codeone));
                 if (verificar.Rows.Count != 0)
                 {
                     string Titulo = verificar.Rows[0]["Titulo"].ToString();
@@ -77,7 +86,16 @@ namespace CorreoElectronico.Correo
 
         protected void GridViewBEntrada_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-
+            // Accede al valor de una celda específica en la fila seleccionada
+            Label code = GridViewBEntrada.Rows[e.RowIndex].FindControl("Label6") as Label;
+            string codeone = code.Text;
+            int codetwo = Convert.ToInt32(codeone);
+            mail4.EliminarMensaje("Eliminados", codetwo);
+            GridViewBEntrada.EditIndex = -1;
+            Response.Write("<script>alert('Mensaje Eliminado')</script>");
+            String mail = Session["Email: "].ToString();
+            GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
+            GridViewBEntrada.DataBind();
         }
     }
 }
