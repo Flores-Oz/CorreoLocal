@@ -48,7 +48,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <EditItemTemplate>
-                                    <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/img/eliminar.png" />
+                                    <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/img/deshacer(1).png" />
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <asp:ImageButton ID="ImageButton3" runat="server" CommandName="Cancel" ImageUrl="~/img/error.png" />
                                 </EditItemTemplate>

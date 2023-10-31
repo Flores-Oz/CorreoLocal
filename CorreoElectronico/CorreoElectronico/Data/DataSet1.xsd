@@ -101,7 +101,7 @@ FROM            Email</CommandText>
               <Mapping SourceColumn="Telefono" DataSetColumn="Telefono" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarEstado" Modifier="Public" Name="ActualizarEstado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="ActualizarEstado">
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="ActualizarEstado" Modifier="Public" Name="ActualizarEstado" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="ActualizarEstado">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE       Mail
@@ -114,7 +114,7 @@ WHERE        (Codigo = @Code)</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarEmail" Modifier="Public" Name="AgregarEmail" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="AgregarEmail">
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="AgregarEmail" Modifier="Public" Name="AgregarEmail" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="AgregarEmail">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO Email
@@ -277,6 +277,73 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Mail5TableAdapter" GeneratorDataComponentClassName="Mail5TableAdapter" Name="Mail5" UserDataComponentName="Mail5TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="Email.dbo.Mail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Codigo AS Identificador, Titulo, EstadoOne AS Bandeja, EstadoTwo AS Estado
+FROM            Mail</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Identificador" DataSetColumn="Identificador" />
+              <Mapping SourceColumn="Titulo" DataSetColumn="Titulo" />
+              <Mapping SourceColumn="Bandeja" DataSetColumn="Bandeja" />
+              <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="Email.dbo.Mail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="VerificarBandejaSalida" GetMethodModifier="Public" GetMethodName="VerificarBandejaSalida" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="VerificarBandejaSalida" UserSourceName="VerificarBandejaSalida">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Codigo AS Identificador, Titulo, EstadoOne AS Bandeja, EstadoTwo AS Estado
+FROM            Mail
+WHERE        (EstadoOne = @Bandeja) AND (Emisor = @Receptor)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Bandeja" ColumnName="EstadoOne" DataSourceName="Email.dbo.Mail" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Bandeja" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Bandeja" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Receptor" ColumnName="Emisor" DataSourceName="Email.dbo.Mail" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Receptor" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Emisor" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Mail6TableAdapter" GeneratorDataComponentClassName="Mail6TableAdapter" Name="Mail6" UserDataComponentName="Mail6TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="Email.dbo.Mail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Titulo, Receptor, Mensaje, [Fecha y Hora]
+FROM            Mail</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Titulo" DataSetColumn="Titulo" />
+              <Mapping SourceColumn="Receptor" DataSetColumn="Receptor" />
+              <Mapping SourceColumn="Mensaje" DataSetColumn="Mensaje" />
+              <Mapping SourceColumn="Fecha y Hora" DataSetColumn="Fecha y Hora" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="EmailConnectionString (Web.config)" DbObjectName="Email.dbo.Mail" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="ObtenerMensajeporCodigo" GetMethodModifier="Public" GetMethodName="ObtenerMensajeporCodigo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="ObtenerMensajeporCodigo" UserSourceName="ObtenerMensajeporCodigo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Titulo, Receptor, Mensaje, [Fecha y Hora]
+FROM            Mail
+WHERE        (Codigo = @Codigo)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Codigo" ColumnName="Codigo" DataSourceName="Email.dbo.Mail" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Codigo" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Codigo" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -344,8 +411,8 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_UserColumnName="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" type="xs:boolean" />
-              <xs:element name="Identificador" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Identificador" msprop:Generator_ColumnPropNameInTable="IdentificadorColumn" msprop:Generator_ColumnPropNameInRow="Identificador" msprop:Generator_ColumnVarNameInTable="columnIdentificador" type="xs:int" />
-              <xs:element name="Bandeja" msprop:Generator_UserColumnName="Bandeja" msprop:Generator_ColumnPropNameInTable="BandejaColumn" msprop:Generator_ColumnPropNameInRow="Bandeja" msprop:Generator_ColumnVarNameInTable="columnBandeja">
+              <xs:element name="Identificador" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdentificadorColumn" msprop:Generator_ColumnPropNameInRow="Identificador" msprop:Generator_UserColumnName="Identificador" msprop:Generator_ColumnVarNameInTable="columnIdentificador" type="xs:int" />
+              <xs:element name="Bandeja" msprop:Generator_ColumnPropNameInTable="BandejaColumn" msprop:Generator_ColumnPropNameInRow="Bandeja" msprop:Generator_UserColumnName="Bandeja" msprop:Generator_ColumnVarNameInTable="columnBandeja">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -355,80 +422,138 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Email" msprop:Generator_RowClassName="EmailRow" msprop:Generator_RowEvHandlerName="EmailRowChangeEventHandler" msprop:Generator_RowDeletedName="EmailRowDeleted" msprop:Generator_RowDeletingName="EmailRowDeleting" msprop:Generator_RowEvArgName="EmailRowChangeEvent" msprop:Generator_TablePropName="Email" msprop:Generator_RowChangedName="EmailRowChanged" msprop:Generator_UserTableName="Email" msprop:Generator_RowChangingName="EmailRowChanging" msprop:Generator_TableClassName="EmailDataTable" msprop:Generator_TableVarName="tableEmail">
+        <xs:element name="Email" msprop:Generator_RowEvHandlerName="EmailRowChangeEventHandler" msprop:Generator_RowDeletedName="EmailRowDeleted" msprop:Generator_RowDeletingName="EmailRowDeleting" msprop:Generator_RowEvArgName="EmailRowChangeEvent" msprop:Generator_TablePropName="Email" msprop:Generator_RowChangedName="EmailRowChanged" msprop:Generator_UserTableName="Email" msprop:Generator_RowChangingName="EmailRowChanging" msprop:Generator_RowClassName="EmailRow" msprop:Generator_TableClassName="EmailDataTable" msprop:Generator_TableVarName="tableEmail">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" type="xs:int" />
+              <xs:element name="PNombre" msprop:Generator_ColumnPropNameInTable="PNombreColumn" msprop:Generator_ColumnPropNameInRow="PNombre" msprop:Generator_UserColumnName="PNombre" msprop:Generator_ColumnVarNameInTable="columnPNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SNombre" msprop:Generator_ColumnPropNameInTable="SNombreColumn" msprop:Generator_ColumnPropNameInRow="SNombre" msprop:Generator_UserColumnName="SNombre" msprop:Generator_ColumnVarNameInTable="columnSNombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PApellido" msprop:Generator_ColumnPropNameInTable="PApellidoColumn" msprop:Generator_ColumnPropNameInRow="PApellido" msprop:Generator_UserColumnName="PApellido" msprop:Generator_ColumnVarNameInTable="columnPApellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SApellido" msprop:Generator_ColumnPropNameInTable="SApellidoColumn" msprop:Generator_ColumnPropNameInRow="SApellido" msprop:Generator_UserColumnName="SApellido" msprop:Generator_ColumnVarNameInTable="columnSApellido">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnVarNameInTable="columnEmail">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnVarNameInTable="columnPassword">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FechaNac" msprop:Generator_ColumnPropNameInTable="FechaNacColumn" msprop:Generator_ColumnPropNameInRow="FechaNac" msprop:Generator_UserColumnName="FechaNac" msprop:Generator_ColumnVarNameInTable="columnFechaNac">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Telefono" msprop:Generator_ColumnPropNameInTable="TelefonoColumn" msprop:Generator_ColumnPropNameInRow="Telefono" msprop:Generator_UserColumnName="Telefono" msprop:Generator_ColumnVarNameInTable="columnTelefono">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mail3" msprop:Generator_RowEvHandlerName="Mail3RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail3RowDeleted" msprop:Generator_RowDeletingName="Mail3RowDeleting" msprop:Generator_RowEvArgName="Mail3RowChangeEvent" msprop:Generator_TablePropName="Mail3" msprop:Generator_RowChangedName="Mail3RowChanged" msprop:Generator_UserTableName="Mail3" msprop:Generator_RowChangingName="Mail3RowChanging" msprop:Generator_RowClassName="Mail3Row" msprop:Generator_TableClassName="Mail3DataTable" msprop:Generator_TableVarName="tableMail3">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Emisor" msprop:Generator_ColumnPropNameInTable="EmisorColumn" msprop:Generator_ColumnPropNameInRow="Emisor" msprop:Generator_UserColumnName="Emisor" msprop:Generator_ColumnVarNameInTable="columnEmisor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Mensaje" msprop:Generator_ColumnPropNameInTable="MensajeColumn" msprop:Generator_ColumnPropNameInRow="Mensaje" msprop:Generator_UserColumnName="Mensaje" msprop:Generator_ColumnVarNameInTable="columnMensaje">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha_x0020_y_x0020_Hora" msprop:Generator_ColumnPropNameInTable="Fecha_y_HoraColumn" msprop:Generator_ColumnPropNameInRow="Fecha_y_Hora" msprop:Generator_UserColumnName="Fecha y Hora" msprop:Generator_ColumnVarNameInTable="columnFecha_y_Hora" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Mail4" msprop:Generator_RowEvHandlerName="Mail4RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail4RowDeleted" msprop:Generator_RowDeletingName="Mail4RowDeleting" msprop:Generator_RowEvArgName="Mail4RowChangeEvent" msprop:Generator_TablePropName="Mail4" msprop:Generator_RowChangedName="Mail4RowChanged" msprop:Generator_UserTableName="Mail4" msprop:Generator_RowChangingName="Mail4RowChanging" msprop:Generator_RowClassName="Mail4Row" msprop:Generator_TableClassName="Mail4DataTable" msprop:Generator_TableVarName="tableMail4">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Identificador" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IdentificadorColumn" msprop:Generator_ColumnPropNameInRow="Identificador" msprop:Generator_UserColumnName="Identificador" msprop:Generator_ColumnVarNameInTable="columnIdentificador" type="xs:int" />
+              <xs:element name="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_UserColumnName="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" type="xs:boolean" />
+              <xs:element name="Bandeja" msprop:Generator_ColumnPropNameInTable="BandejaColumn" msprop:Generator_ColumnPropNameInRow="Bandeja" msprop:Generator_UserColumnName="Bandeja" msprop:Generator_ColumnVarNameInTable="columnBandeja">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MailReal" msprop:Generator_RowClassName="MailRealRow" msprop:Generator_RowEvHandlerName="MailRealRowChangeEventHandler" msprop:Generator_RowDeletedName="MailRealRowDeleted" msprop:Generator_RowDeletingName="MailRealRowDeleting" msprop:Generator_RowEvArgName="MailRealRowChangeEvent" msprop:Generator_TablePropName="MailReal" msprop:Generator_RowChangedName="MailRealRowChanged" msprop:Generator_UserTableName="MailReal" msprop:Generator_RowChangingName="MailRealRowChanging" msprop:Generator_TableClassName="MailRealDataTable" msprop:Generator_TableVarName="tableMailReal">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigo" type="xs:int" />
-              <xs:element name="PNombre" msprop:Generator_UserColumnName="PNombre" msprop:Generator_ColumnPropNameInTable="PNombreColumn" msprop:Generator_ColumnPropNameInRow="PNombre" msprop:Generator_ColumnVarNameInTable="columnPNombre">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="SNombre" msprop:Generator_UserColumnName="SNombre" msprop:Generator_ColumnPropNameInTable="SNombreColumn" msprop:Generator_ColumnPropNameInRow="SNombre" msprop:Generator_ColumnVarNameInTable="columnSNombre">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PApellido" msprop:Generator_UserColumnName="PApellido" msprop:Generator_ColumnPropNameInTable="PApellidoColumn" msprop:Generator_ColumnPropNameInRow="PApellido" msprop:Generator_ColumnVarNameInTable="columnPApellido">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="SApellido" msprop:Generator_UserColumnName="SApellido" msprop:Generator_ColumnPropNameInTable="SApellidoColumn" msprop:Generator_ColumnPropNameInRow="SApellido" msprop:Generator_ColumnVarNameInTable="columnSApellido">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Email" msprop:Generator_UserColumnName="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnVarNameInTable="columnEmail">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_ColumnVarNameInTable="columnPassword">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="FechaNac" msprop:Generator_UserColumnName="FechaNac" msprop:Generator_ColumnPropNameInTable="FechaNacColumn" msprop:Generator_ColumnPropNameInRow="FechaNac" msprop:Generator_ColumnVarNameInTable="columnFechaNac">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Telefono" msprop:Generator_UserColumnName="Telefono" msprop:Generator_ColumnPropNameInTable="TelefonoColumn" msprop:Generator_ColumnPropNameInRow="Telefono" msprop:Generator_ColumnVarNameInTable="columnTelefono">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="Mail3" msprop:Generator_RowClassName="Mail3Row" msprop:Generator_RowEvHandlerName="Mail3RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail3RowDeleted" msprop:Generator_RowDeletingName="Mail3RowDeleting" msprop:Generator_RowEvArgName="Mail3RowChangeEvent" msprop:Generator_TablePropName="Mail3" msprop:Generator_RowChangedName="Mail3RowChanged" msprop:Generator_UserTableName="Mail3" msprop:Generator_RowChangingName="Mail3RowChanging" msprop:Generator_TableClassName="Mail3DataTable" msprop:Generator_TableVarName="tableMail3">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Emisor" msprop:Generator_UserColumnName="Emisor" msprop:Generator_ColumnPropNameInTable="EmisorColumn" msprop:Generator_ColumnPropNameInRow="Emisor" msprop:Generator_ColumnVarNameInTable="columnEmisor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Receptor" msprop:Generator_UserColumnName="Receptor" msprop:Generator_ColumnPropNameInTable="ReceptorColumn" msprop:Generator_ColumnPropNameInRow="Receptor" msprop:Generator_ColumnVarNameInTable="columnReceptor">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -442,37 +567,51 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="EstadoOne" msprop:Generator_UserColumnName="EstadoOne" msprop:Generator_ColumnPropNameInTable="EstadoOneColumn" msprop:Generator_ColumnPropNameInRow="EstadoOne" msprop:Generator_ColumnVarNameInTable="columnEstadoOne">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EstadoTwo" msprop:Generator_UserColumnName="EstadoTwo" msprop:Generator_ColumnPropNameInTable="EstadoTwoColumn" msprop:Generator_ColumnPropNameInRow="EstadoTwo" msprop:Generator_ColumnVarNameInTable="columnEstadoTwo" type="xs:boolean" />
+              <xs:element name="EstadoTree" msprop:Generator_UserColumnName="EstadoTree" msprop:Generator_ColumnPropNameInTable="EstadoTreeColumn" msprop:Generator_ColumnPropNameInRow="EstadoTree" msprop:Generator_ColumnVarNameInTable="columnEstadoTree">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="Fecha_x0020_y_x0020_Hora" msprop:Generator_UserColumnName="Fecha y Hora" msprop:Generator_ColumnPropNameInTable="Fecha_y_HoraColumn" msprop:Generator_ColumnPropNameInRow="Fecha_y_Hora" msprop:Generator_ColumnVarNameInTable="columnFecha_y_Hora" type="xs:dateTime" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Mail4" msprop:Generator_RowClassName="Mail4Row" msprop:Generator_RowEvHandlerName="Mail4RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail4RowDeleted" msprop:Generator_RowDeletingName="Mail4RowDeleting" msprop:Generator_RowEvArgName="Mail4RowChangeEvent" msprop:Generator_TablePropName="Mail4" msprop:Generator_RowChangedName="Mail4RowChanged" msprop:Generator_UserTableName="Mail4" msprop:Generator_RowChangingName="Mail4RowChanging" msprop:Generator_TableClassName="Mail4DataTable" msprop:Generator_TableVarName="tableMail4">
+        <xs:element name="Mail5" msprop:Generator_RowEvHandlerName="Mail5RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail5RowDeleted" msprop:Generator_RowDeletingName="Mail5RowDeleting" msprop:Generator_RowEvArgName="Mail5RowChangeEvent" msprop:Generator_TablePropName="Mail5" msprop:Generator_RowChangedName="Mail5RowChanged" msprop:Generator_RowChangingName="Mail5RowChanging" msprop:Generator_TableClassName="Mail5DataTable" msprop:Generator_RowClassName="Mail5Row" msprop:Generator_TableVarName="tableMail5" msprop:Generator_UserTableName="Mail5">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Identificador" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Identificador" msprop:Generator_ColumnPropNameInTable="IdentificadorColumn" msprop:Generator_ColumnPropNameInRow="Identificador" msprop:Generator_ColumnVarNameInTable="columnIdentificador" type="xs:int" />
-              <xs:element name="Titulo" msprop:Generator_UserColumnName="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnVarNameInTable="columnTitulo">
+              <xs:element name="Identificador" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Identificador" msprop:Generator_ColumnPropNameInTable="IdentificadorColumn" msprop:Generator_ColumnVarNameInTable="columnIdentificador" msprop:Generator_UserColumnName="Identificador" type="xs:int" />
+              <xs:element name="Titulo" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnVarNameInTable="columnTitulo" msprop:Generator_UserColumnName="Titulo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Estado" msprop:Generator_UserColumnName="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" type="xs:boolean" />
-              <xs:element name="Bandeja" msprop:Generator_UserColumnName="Bandeja" msprop:Generator_ColumnPropNameInTable="BandejaColumn" msprop:Generator_ColumnPropNameInRow="Bandeja" msprop:Generator_ColumnVarNameInTable="columnBandeja">
+              <xs:element name="Bandeja" msprop:Generator_ColumnPropNameInRow="Bandeja" msprop:Generator_ColumnPropNameInTable="BandejaColumn" msprop:Generator_ColumnVarNameInTable="columnBandeja" msprop:Generator_UserColumnName="Bandeja">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="Estado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_UserColumnName="Estado" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="MailReal" msprop:Generator_RowEvHandlerName="MailRealRowChangeEventHandler" msprop:Generator_RowDeletedName="MailRealRowDeleted" msprop:Generator_RowDeletingName="MailRealRowDeleting" msprop:Generator_RowEvArgName="MailRealRowChangeEvent" msprop:Generator_TablePropName="MailReal" msprop:Generator_RowChangedName="MailRealRowChanged" msprop:Generator_RowChangingName="MailRealRowChanging" msprop:Generator_TableClassName="MailRealDataTable" msprop:Generator_RowClassName="MailRealRow" msprop:Generator_TableVarName="tableMailReal" msprop:Generator_UserTableName="MailReal">
+        <xs:element name="Mail6" msprop:Generator_RowEvHandlerName="Mail6RowChangeEventHandler" msprop:Generator_RowDeletedName="Mail6RowDeleted" msprop:Generator_RowDeletingName="Mail6RowDeleting" msprop:Generator_RowEvArgName="Mail6RowChangeEvent" msprop:Generator_TablePropName="Mail6" msprop:Generator_RowChangedName="Mail6RowChanged" msprop:Generator_RowChangingName="Mail6RowChanging" msprop:Generator_TableClassName="Mail6DataTable" msprop:Generator_RowClassName="Mail6Row" msprop:Generator_TableVarName="tableMail6" msprop:Generator_UserTableName="Mail6">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Codigo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="Codigo" msprop:Generator_ColumnPropNameInTable="CodigoColumn" msprop:Generator_ColumnVarNameInTable="columnCodigo" msprop:Generator_UserColumnName="Codigo" type="xs:int" />
-              <xs:element name="Emisor" msprop:Generator_ColumnPropNameInRow="Emisor" msprop:Generator_ColumnPropNameInTable="EmisorColumn" msprop:Generator_ColumnVarNameInTable="columnEmisor" msprop:Generator_UserColumnName="Emisor">
+              <xs:element name="Titulo" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnVarNameInTable="columnTitulo" msprop:Generator_UserColumnName="Titulo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
@@ -486,32 +625,10 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Titulo" msprop:Generator_ColumnPropNameInRow="Titulo" msprop:Generator_ColumnPropNameInTable="TituloColumn" msprop:Generator_ColumnVarNameInTable="columnTitulo" msprop:Generator_UserColumnName="Titulo">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Mensaje" msprop:Generator_ColumnPropNameInRow="Mensaje" msprop:Generator_ColumnPropNameInTable="MensajeColumn" msprop:Generator_ColumnVarNameInTable="columnMensaje" msprop:Generator_UserColumnName="Mensaje">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1500" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="EstadoOne" msprop:Generator_ColumnPropNameInRow="EstadoOne" msprop:Generator_ColumnPropNameInTable="EstadoOneColumn" msprop:Generator_ColumnVarNameInTable="columnEstadoOne" msprop:Generator_UserColumnName="EstadoOne">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="EstadoTwo" msprop:Generator_ColumnPropNameInRow="EstadoTwo" msprop:Generator_ColumnPropNameInTable="EstadoTwoColumn" msprop:Generator_ColumnVarNameInTable="columnEstadoTwo" msprop:Generator_UserColumnName="EstadoTwo" type="xs:boolean" />
-              <xs:element name="EstadoTree" msprop:Generator_ColumnPropNameInRow="EstadoTree" msprop:Generator_ColumnPropNameInTable="EstadoTreeColumn" msprop:Generator_ColumnVarNameInTable="columnEstadoTree" msprop:Generator_UserColumnName="EstadoTree">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -536,6 +653,10 @@ SELECT Codigo, Emisor, Receptor, Titulo, Mensaje, EstadoOne, EstadoTwo, EstadoTr
     <xs:unique name="MailReal_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:MailReal" />
       <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+    <xs:unique name="Mail5_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Mail5" />
+      <xs:field xpath="mstns:Identificador" />
     </xs:unique>
   </xs:element>
 </xs:schema>

@@ -56,6 +56,9 @@ namespace CorreoElectronico.Correo
                     LabelFechaHora.Text = Fecha;
                     LabelCuerpo.Text = cuerpo;
                 }
+                String mail = Session["Email: "].ToString();
+                GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
+                GridViewBEntrada.DataBind();
             }
         }
 
