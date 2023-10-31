@@ -99,6 +99,7 @@ namespace CorreoElectronico.Correo
             String mail = Session["Email: "].ToString();
             GridViewBEntrada.DataSource = mail4.VerificarBandejadeEntrada("Entrada", mail);
             GridViewBEntrada.DataBind();
+            LimpiarMensaje();
         }
     }
 }

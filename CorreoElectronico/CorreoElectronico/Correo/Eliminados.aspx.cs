@@ -90,6 +90,7 @@ namespace CorreoElectronico.Correo
             String mail = Session["Email: "].ToString();
             GridViewSalida.DataSource = mail4.VerificarBandejadeEntrada("Eliminados", mail);
             GridViewSalida.DataBind();
+            LimpiarMensaje();
         }
     }
 }
