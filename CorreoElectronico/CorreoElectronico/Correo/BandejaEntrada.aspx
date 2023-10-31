@@ -78,7 +78,7 @@
 
             <div class="col-lg-6">
 
-                <div class="p-4 p-md-5 rounded text-body-emphasis bg-info">
+                <div class="p-4 p-md-5 rounded text-body-emphasis p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end">
                     <div class="col-lg-6 px-0">
                         <h1 class="display-4 fst-italic">
                             <asp:Label ID="LabelTitulo" runat="server" Text="Bienvenido"></asp:Label>
